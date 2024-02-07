@@ -35,7 +35,7 @@ function moveHero(dir) {
 }
 // Sets an interval for shutting (blinking) the laser up towards aliens
 function shoot() {
-    if(gHero.isShoot) return
+  if (gHero.isShoot) return;
   gHero.isShoot = true;
   const heroPos = gHero.pos;
   var currLaserPose = { i: heroPos.i, j: heroPos.j };
@@ -51,42 +51,15 @@ function blinkLaser(pos) {
     gHero.isShoot = false;
     updateCell(nextPos, "");
     updateCell(pos, "");
-    if(nextCell === ALIEN){
-        updateScore(10)
-        handleAlienHit(nextPos)
+    if (nextCell === ALIEN) {
+      updateScore(10);
+      handleAlienHit(nextPos);
     }
     return;
-  }else{
-      if (pos.i !== gHero.pos.i) updateCell(pos);
-      --pos.i;
-      updateCell(pos, LASER);
-    }
-}
-
-// -------------------------------------------------------------------------------------------
-
-function createGhosts(board) {
-  // DONE: 3 ghosts and an interval
-  gGhosts = [];
-  for (var i = 0; i < 3; i++) {
-    createGhost(board);
+  } else {
+    if (pos.i !== gHero.pos.i) updateCell(pos);
+    --pos.i;
+    updateCell(pos, LASER);
   }
-
-  if (gIntervalGhosts) clearInterval(gIntervalGhosts);
-  gIntervalGhosts = setInterval(moveGhosts, 1000);
 }
 
-function createGhost(board) {
-  // DONE
-  const ghost = {
-    location: {
-      i: 2,
-      j: 6,
-    },
-    currCellContent: FOOD,
-    color: getRandomColor(),
-  };
-
-  gGhosts.push(ghost);
-  board[ghost.location.i][ghost.location.j] = GHOST;
-}

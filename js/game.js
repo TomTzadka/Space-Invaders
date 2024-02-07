@@ -15,6 +15,7 @@ var gGame = {
 // Called when game loads
 function init() {
   gBoard = createBoard();
+  gGame.isOn = true
   createHero(gBoard);
   createAliens(gBoard);
 
@@ -55,7 +56,6 @@ function createCell(gameObject = null) {
     gameObject: gameObject,
   };
 }
-// position such as: {i: 2, j: 7}
 function updateCell(pos, gameObject = null) {
   gBoard[pos.i][pos.j].gameObject = gameObject;
   var elCell = getElCell(pos);
@@ -63,8 +63,17 @@ function updateCell(pos, gameObject = null) {
 }
 
 
-function updateScore(diff){
-    gGame.score += diff
-    const elScore = document.querySelector('.score span')
+function updateScore(diff = 0){
+  const elScore = document.querySelector('.score span')
+  if(gGame.isOn) gGame.score += diff
+  else gGame.score = 0
+
+  
     elScore.innerText = gGame.score
+}
+
+function startOver() {
+  gGame.isOn = false
+  updateScore()
+  init()
 }

@@ -1,17 +1,38 @@
 *{
     box-sizing: border-box;
+    border-collapse: collapse
 }
-
-
+body{
+    background-color: rgb(191, 148, 248);
+}
 .board-container{
-    background-color: rgb(35, 34, 34);
-    
+    background-image: url('../img/space.webp');
+    background-size: cover;
+    margin: auto;
+    border-radius: 11px;
 }
 
 td{
-    background-color: rgb(215, 145, 145);
-    /* border: solid 1px rgb(0, 0, 0); */
     height: 40px;
     width: 40px;
     text-align: center;
+    color: rgb(255, 220, 21);
+}
+.score{
+    text-align: center  ;
+}
+
+.restart{
+    text-align: center;
+    margin-top: 20px;
+
+}
+.restart-btn{
+    font-size: 2rem;
+    width: 140px;
+    height: 60px;
+    border-radius: 8px;
+}
+.restart-btn:hover{
+    color:  rgb(255, 220, 21);
 }
