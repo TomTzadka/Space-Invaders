@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.board-container{
+    background-color: rgb(35, 34, 34);
+    
+}
+
+td{
+    background-color: rgb(215, 145, 145);
+    /* border: solid 1px rgb(0, 0, 0); */
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}

@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    <h1>Test</h1>
+<body onload="init()" onkeyup="onKeyDown(event)">
+    
+    <h1 class="score">Score: <span>0</span></h1>
+    <table>
+        <tbody class="board-container">
+            <tr>
+                <!-- <td class="cell cell-i-j" data-j="i" data-j="j">x</td> -->
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <script src="js/util.js"></script>
+    <script src="js/alien.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>
