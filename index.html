@@ -8,21 +8,25 @@
 </head>
 <body onload="init()" onkeyup="onKeyDown(event)">
     
-    <h1 class="score">Score: <span>0</span></h1>
+
+    <!-- <div class="levels-container">
+        <button></button>
+    </div> -->
+
+
     <table class="board-container"  >
         <tbody>
             <tr>
                 <!-- <td class="cell cell-i-j" data-j="i" data-j="j">x</td> -->
             </tr>
-
+            
         </tbody>
     </table>
+    
     <div class="restart">
-        <button class="restart-btn" onclick="startOver()">Restart</button>
-
+        <h1 class="score">Score: <span>0</span></h1>
+        <button class="restart-btn" onclick="startGame()">Start</button>
     </div>
-
-
 
 
 

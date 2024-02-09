@@ -30,14 +30,16 @@ function startTimer() {
   }, 100);
 }
 
-function makeId(length = 6) {
-  var txt = "";
-  var possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  for (var i = 0; i < length; i++) {
-    txt += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
+let gBackgroundSound = null;
+function playSound(name) {
+  const sound = new Audio(`sound/${name}.mp3`)
+  sound.play()
+  if(name ==='background')gBackgroundSound = sound;
+  
+}
 
-  return txt;
+function stopBackgroundSoundSound() {
+  gBackgroundSound.pause()
+  console.log('stop');
 }

@@ -13,12 +13,19 @@ function createAliens(board) {
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[0].length; j++) {
       if ((i < ALIEN_ROW_COUNT) & (j < ALIEN_ROW_LENGTH))
-        board[i][j] = createCell(ALIEN);
+        board[i][j] = createCell("", ALIEN);
     }
   }
 }
 function handleAlienHit(pos) {
-  console.log(pos);
+  playSound('hit')
+  updateScore(10);
+  updateCell(pos, EXPLOSION);
+
+  setTimeout(() => {
+    updateCell(pos);
+  }, 150);
+  console.log("handleAlienHit(pos)", pos);
 }
 function shiftBoardRight(board, fromI, toI) {
   for (let i = fromI; i < toI; i++) {
@@ -26,7 +33,6 @@ function shiftBoardRight(board, fromI, toI) {
       const cell = board[i][j];
       if (cell.gameObject === ALIEN) {
         if (j === board[i].length - 1) {
-          //   clearInterval(gIntervalAliens);
           shiftBoardDown(board, fromI, toI, true);
           return;
         }
@@ -53,6 +59,10 @@ function shiftBoardLeft(board, fromI, toI) {
   //   clearInterval(gIntervalAliens);
 }
 function shiftBoardDown(board, fromI, toI, isRight) {
+  console.log("toI", toI);
+  if (toI === board.length - 2) return gameOver(false);
+  // if (toI === 2) return gameOver(false);  //for tests
+
   for (let i = toI; i >= fromI; i--) {
     for (let j = 0; j < board[i].length; j++) {
       const cell = board[i][j];
@@ -62,25 +72,28 @@ function shiftBoardDown(board, fromI, toI, isRight) {
       }
     }
   }
+
   clearInterval(gIntervalAliens);
+
   if (isRight) {
     gIntervalAliens = setInterval(() => {
       shiftBoardLeft(board, fromI + 1, toI + 1);
-    }, 1000);
+    }, 300);
   } else {
     gIntervalAliens = setInterval(() => {
       shiftBoardRight(board, fromI + 1, toI + 1);
-    }, 1000);
+    }, 300);
   }
 }
 // runs the interval for moving aliens side to side and down
 // it re-renders the board every time
 // when the aliens are reaching the hero row - interval stops
+
 function moveAliens() {
-  var startIdx = 0;
-  var endIdx = ALIEN_ROW_COUNT;
+  if (!gGame.isOn) return;
 
   gIntervalAliens = setInterval(() => {
-    shiftBoardRight(gBoard, startIdx, endIdx);
-  }, 1000);
+    shiftBoardRight(gBoard, 0, ALIEN_ROW_COUNT);
+  }, 300);
+
 }
