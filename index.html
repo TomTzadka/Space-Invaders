@@ -8,15 +8,9 @@
 </head>
 <body onload="init()" onkeyup="onKeyDown(event)">
     
-
-    <!-- <div class="levels-container">
-        <button></button>
-    </div> -->
-
 <div class="header">
     <div class="game-info">
         <h1 class="score">Score: <span>0</span></h1>
-        <h1 class="alien-hit">Alien Hits: <span>0</span></h1>
         <h1 class="level">Level: <span>Easy</span></h1>
     </div>
     <div class="levels">
@@ -24,17 +18,10 @@
         <button class="level-btn" onclick="changeSpeed(this)">Medium</button>
         <button class="level-btn" onclick="changeSpeed(this)">Hard</button>
     </div>
-        
-    
-    
 </div>
 
     <table class="board-container"  >
         <tbody>
-            <tr>
-                <!-- <td class="cell cell-i-j" data-j="i" data-j="j">x</td> -->
-            </tr>
-            
         </tbody>
     </table>
     
@@ -42,7 +29,12 @@
         <button class="restart-btn" onclick="startGame(this)">Start</button>
     </div>
 
-
+<div class="footer">
+    <h1>Keys</h1>
+    <span>S = Shoot</span>
+    <span>Arrows = Right/Left</span>
+    <span>X = Super Mode</span>
+</div>
 
     <script src="js/util.js"></script>
     <script src="js/alien.js"></script>

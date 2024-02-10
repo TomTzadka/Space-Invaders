@@ -1,10 +1,17 @@
+@import url('https://fonts.cdnfonts.com/css/arcade-classic');
 *{
     box-sizing: border-box;
     border-collapse: collapse
+    
+}
+html *{
+    font-family: 'ArcadeClassic', sans-serif;
+
 }
 body{
     background-color: rgb(191, 148, 248);
 }
+
 .board-container{
     background-image: url('../img/space.webp');
     background-size: cover;
@@ -52,4 +59,11 @@ button:hover{
 .ground{
     background-color: rgb(133, 30, 109);
     border-radius: 5px;
+}
+.footer{
+    position: fixed;
+    top: 20%;
+}
+.footer *{
+    display: block;
 }

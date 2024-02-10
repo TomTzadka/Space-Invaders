@@ -18,9 +18,9 @@ function onKeyDown(ev) {
     case "KeyS":
       shoot();
       break;
-    case "KeyN":
-      console.log("negh mode!");
-      break;
+    // case "KeyN":
+    //   console.log("negh mode!");
+    //   break;
       case "KeyX":
         superMode()
         console.log("super mode!");
@@ -48,12 +48,6 @@ function shoot() {
 
   if(gHero.isShoot)return
 
-  // if(gHero.isShoot){
-  //   if(!gGame.isSuperMode)return
-  // }
-
-
-
   gHero.isShoot = true;
   var currLaserPose = { i: gHero.pos.i, j: gHero.pos.j };
 
@@ -70,8 +64,6 @@ function blinkLaser(pos) {
     clearInterval(gLaserInterval);
     gHero.isShoot = false;
     updateCell(pos);
-    // updateCell(nextPos);
-    
     if (!pos.i) return;
     else if(nextCell === CANDY||nextCell === ALIEN){
       var target = (nextCell === CANDY) ? CANDY: ALIEN
@@ -84,8 +76,6 @@ function blinkLaser(pos) {
     updateCell(pos, LASER);
   }
 }
-
-
 
 function handleCandyHit(pos){
 
