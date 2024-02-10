@@ -13,6 +13,21 @@
         <button></button>
     </div> -->
 
+<div class="header">
+    <div class="game-info">
+        <h1 class="score">Score: <span>0</span></h1>
+        <h1 class="alien-hit">Alien Hits: <span>0</span></h1>
+        <h1 class="level">Level: <span>Easy</span></h1>
+    </div>
+    <div class="levels">
+        <button class="level-btn" onclick="changeSpeed(this)">Easy</button>
+        <button class="level-btn" onclick="changeSpeed(this)">Medium</button>
+        <button class="level-btn" onclick="changeSpeed(this)">Hard</button>
+    </div>
+        
+    
+    
+</div>
 
     <table class="board-container"  >
         <tbody>
@@ -24,8 +39,7 @@
     </table>
     
     <div class="restart">
-        <h1 class="score">Score: <span>0</span></h1>
-        <button class="restart-btn" onclick="startGame()">Start</button>
+        <button class="restart-btn" onclick="startGame(this)">Start</button>
     </div>
 
 

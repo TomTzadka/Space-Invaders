@@ -41,5 +41,4 @@ function playSound(name) {
 
 function stopBackgroundSoundSound() {
   gBackgroundSound.pause()
-  console.log('stop');
 }

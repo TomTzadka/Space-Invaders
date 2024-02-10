@@ -4,7 +4,7 @@ var gLaserInterval;
 var gHero = { pos: { i: 12, j: 5 }, isShoot: false };
 
 function createHero(board) {
-  board[gHero.pos.i][gHero.pos.j] = createCell("", HERO);
+  board[gHero.pos.i][gHero.pos.j] = createCell(HERO);
 }
 function onKeyDown(ev) {
   const key = ev.code;
@@ -15,11 +15,15 @@ function onKeyDown(ev) {
     case "ArrowLeft":
       moveHero(-1);
       break;
-    case "Space":
+    case "KeyS":
       shoot();
       break;
     case "KeyN":
-      console.log("super mode!");
+      console.log("negh mode!");
+      break;
+      case "KeyX":
+        superMode()
+        console.log("super mode!");
       break;
     default:
       break;
@@ -41,7 +45,14 @@ function moveHero(dir) {
 
 function shoot() {
   if (!gGame.isOn) return;
-  if (gHero.isShoot) return;
+
+  if(gHero.isShoot)return
+
+  // if(gHero.isShoot){
+  //   if(!gGame.isSuperMode)return
+  // }
+
+
 
   gHero.isShoot = true;
   var currLaserPose = { i: gHero.pos.i, j: gHero.pos.j };
@@ -53,16 +64,36 @@ function shoot() {
 
 function blinkLaser(pos) {
   const nextPos = { i: pos.i - 1, j: pos.j };
-
-  if (!pos.i || gBoard[nextPos.i][nextPos.j].gameObject === ALIEN) {
+  const nextCell = gBoard[nextPos.i][nextPos.j].gameObject
+  
+  if (!nextPos.i || nextCell === ALIEN) {
     clearInterval(gLaserInterval);
     gHero.isShoot = false;
     updateCell(pos);
+    // updateCell(nextPos);
+    
     if (!pos.i) return;
-    handleAlienHit(nextPos);
+    else if(nextCell === CANDY||nextCell === ALIEN){
+      var target = (nextCell === CANDY) ? CANDY: ALIEN
+      handleHit(nextPos,target);
+    }
+    
   } else {
     if (pos.i !== gHero.pos.i) updateCell(pos);
     --pos.i;
     updateCell(pos, LASER);
   }
+}
+
+
+
+function handleCandyHit(pos){
+
+  playSound("hit");
+  updateScore(50);
+  updateCell(pos, EXPLOSION);
+
+  setTimeout(() => {
+    updateCell(pos);
+  }, 150);
 }
