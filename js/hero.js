@@ -53,7 +53,7 @@ function shoot() {
 
   gLaserInterval = setInterval(() => {
     blinkLaser(currLaserPose);
-  }, 200);
+  }, LASER_SPEED);
 }
 
 function blinkLaser(pos) {
